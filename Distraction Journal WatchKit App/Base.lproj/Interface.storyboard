@@ -1,39 +1,104 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Distraction_Journal_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" text="Let's Stay Focused Today!" textAlignment="center" numberOfLines="0" id="6aD-pp-d1S"/>
+                        <separator alignment="left" id="J2Q-3M-XuM"/>
+                        <button width="1" alignment="left" title="Log Distraction" id="Ig4-yS-SVq">
+                            <connections>
+                                <segue destination="AfR-iw-BXB" kind="push" id="OQ2-Ov-Drm"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Remind Me" id="UuU-dK-eEF">
+                            <connections>
+                                <segue destination="gat-VU-A0f" kind="push" id="T2k-Cz-3aY"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="190" y="6"/>
+        </scene>
+        <!--Notifications Interface Controller-->
+        <scene sceneID="bro-lA-faY">
+            <objects>
+                <controller id="gat-VU-A0f" customClass="NotificationsInterfaceController" customModule="Distraction_Journal_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Check on me for the next:" numberOfLines="2" id="txw-fl-DIi"/>
+                        <picker height="70" alignment="left" focusStyle="stack" id="1d8-5U-f6e">
+                            <connections>
+                                <action selector="pickerChanged:" destination="gat-VU-A0f" id="suY-za-HcS"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Start" id="oIq-eg-o2N">
+                            <connections>
+                                <action selector="startTapped" destination="gat-VU-A0f" id="URi-F9-awd"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Delete Reminders" id="ebd-ny-4f8">
+                            <connections>
+                                <action selector="deleteTapped" destination="gat-VU-A0f" id="JSK-ko-2f0"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="picker" destination="1d8-5U-f6e" id="UzH-Jm-OF4"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="190" y="331"/>
+        </scene>
+        <!--distractions-->
+        <scene sceneID="vFI-kq-wew">
+            <objects>
+                <controller identifier="distractions" id="AfR-iw-BXB" customClass="DistractionsInterfaceController" customModule="Distraction_Journal_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="FfQ-v2-7MU">
+                            <items>
+                                <tableRow identifier="distractionrow" id="dAG-WT-4EV" customClass="DistractionRowController" customModule="Distraction_Journal_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="nwb-DR-tS0">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="9jq-gg-et1"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="label" destination="9jq-gg-et1" id="lZl-fe-sPO"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="FfQ-v2-7MU" id="B1P-zG-rXc"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="415" y="6"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Are you still working?" numberOfLines="0" id="IdU-wH-bcW">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
                     </connections>
                 </notificationController>
             </objects>
             <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
 </document>

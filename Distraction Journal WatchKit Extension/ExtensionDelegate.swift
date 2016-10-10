@@ -7,11 +7,18 @@
 //
 
 import WatchKit
+import WatchConnectivity
+import UserNotifications
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
+        if WCSession.isSupported() {
+            WCSession.default().delegate = self
+            WCSession.default().activate()
+        }
     }
 
     func applicationDidBecomeActive() {
@@ -44,6 +51,43 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 // make sure to complete unhandled task types
                 task.setTaskCompleted()
             }
+        }
+    }
+    
+    // Watch Connectivity
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if error != nil {
+            print("Error: \(error)")
+        } else {
+            print("Ready to talk with iOS device")
+        }
+    }
+    
+    // Notification Fun
+    
+    func askForNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (authBool, error) in
+            if authBool {
+                
+                let yesAction = UNNotificationAction(identifier: "yesAction", title: "Yes", options: [])
+                
+                let noAction = UNNotificationAction(identifier: "noAction", title: "No", options: [.foreground])
+                
+                let category = UNNotificationCategory(identifier: "workingCategory", actions: [yesAction, noAction], intentIdentifiers: [], options: [])
+                
+            
+                UNUserNotificationCenter.current().setNotificationCategories([category])
+                
+                UNUserNotificationCenter.current().delegate = self
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.actionIdentifier == "noAction" {
+            WKExtension.shared().rootInterfaceController?.popToRootController()
+            WKExtension.shared().rootInterfaceController?.pushController(withName: "distractions", context: nil)
         }
     }
 

@@ -20,6 +20,10 @@
 		0119D6551DA569AC003AC02B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D6541DA569AC003AC02B /* ExtensionDelegate.swift */; };
 		0119D6571DA569AC003AC02B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D6561DA569AC003AC02B /* NotificationController.swift */; };
 		0119D6591DA569AD003AC02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0119D6581DA569AD003AC02B /* Assets.xcassets */; };
+		0119D6691DA5ACB5003AC02B /* DistractionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D6681DA5ACB5003AC02B /* DistractionsInterfaceController.swift */; };
+		0119D66B1DA5ACF0003AC02B /* DistractionRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D66A1DA5ACF0003AC02B /* DistractionRowController.swift */; };
+		0119D66E1DA5C90F003AC02B /* DistractionData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0119D66C1DA5C90F003AC02B /* DistractionData.xcdatamodeld */; };
+		0119D6911DA6F033003AC02B /* NotificationsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D6901DA6F033003AC02B /* NotificationsInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		0119D6561DA569AC003AC02B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		0119D6581DA569AD003AC02B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0119D65A1DA569AD003AC02B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0119D6681DA5ACB5003AC02B /* DistractionsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistractionsInterfaceController.swift; sourceTree = "<group>"; };
+		0119D66A1DA5ACF0003AC02B /* DistractionRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistractionRowController.swift; sourceTree = "<group>"; };
+		0119D66D1DA5C90F003AC02B /* DistractionData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DistractionData.xcdatamodel; sourceTree = "<group>"; };
+		0119D6901DA6F033003AC02B /* NotificationsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,7 @@
 			children = (
 				0119D62D1DA569AC003AC02B /* AppDelegate.swift */,
 				0119D62F1DA569AC003AC02B /* ViewController.swift */,
+				0119D66C1DA5C90F003AC02B /* DistractionData.xcdatamodeld */,
 				0119D6311DA569AC003AC02B /* Main.storyboard */,
 				0119D6341DA569AC003AC02B /* Assets.xcassets */,
 				0119D6361DA569AC003AC02B /* LaunchScreen.storyboard */,
@@ -149,8 +158,11 @@
 		0119D64F1DA569AC003AC02B /* Distraction Journal WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0119D6521DA569AC003AC02B /* InterfaceController.swift */,
 				0119D6541DA569AC003AC02B /* ExtensionDelegate.swift */,
+				0119D6521DA569AC003AC02B /* InterfaceController.swift */,
+				0119D6681DA5ACB5003AC02B /* DistractionsInterfaceController.swift */,
+				0119D66A1DA5ACF0003AC02B /* DistractionRowController.swift */,
+				0119D6901DA6F033003AC02B /* NotificationsInterfaceController.swift */,
 				0119D6561DA569AC003AC02B /* NotificationController.swift */,
 				0119D6581DA569AD003AC02B /* Assets.xcassets */,
 				0119D65A1DA569AD003AC02B /* Info.plist */,
@@ -307,6 +319,7 @@
 			files = (
 				0119D6301DA569AC003AC02B /* ViewController.swift in Sources */,
 				0119D62E1DA569AC003AC02B /* AppDelegate.swift in Sources */,
+				0119D66E1DA5C90F003AC02B /* DistractionData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,9 +327,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0119D6691DA5ACB5003AC02B /* DistractionsInterfaceController.swift in Sources */,
 				0119D6571DA569AC003AC02B /* NotificationController.swift in Sources */,
+				0119D6911DA6F033003AC02B /* NotificationsInterfaceController.swift in Sources */,
 				0119D6551DA569AC003AC02B /* ExtensionDelegate.swift in Sources */,
 				0119D6531DA569AC003AC02B /* InterfaceController.swift in Sources */,
+				0119D66B1DA5ACF0003AC02B /* DistractionRowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +603,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0119D66C1DA5C90F003AC02B /* DistractionData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0119D66D1DA5C90F003AC02B /* DistractionData.xcdatamodel */,
+			);
+			currentVersion = 0119D66D1DA5C90F003AC02B /* DistractionData.xcdatamodel */;
+			path = DistractionData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0119D6221DA569AC003AC02B /* Project object */;
 }
